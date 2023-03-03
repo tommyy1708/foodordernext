@@ -1,0 +1,22 @@
+.container {
+  background-color: rgb(213, 194, 123);
+  font-size: 20px;
+  text-align: center;
+  margin: auto;
+}
+.menu{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+}
+
+.menu a{
+  text-decoration: none;
+  color: #000;
+}
+
+.menu a:hover{
+  -webkit-text-fill-color: red;
+}

@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
+
+html,
+body {
+  background: #f2f2f2;
+  color: #333;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.large-text {
+  font-size: large;
+}
+
+.underline {
+  border-bottom: 1px dashed #333;
+}
+
+.list {
+  list-style-type: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+nav {
+  margin: 10px auto 0;
+  padding: 10px 0;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid #ddd;
+}
+
+footer {
+  display: block;
+  text-align: center;
+}
+
+.main-content {
+  width: 100%;
+  display: flex;
+}
+
+.nav-selected {
+  color: red;
+}
+
+/* siderbar css below */
+
+.layout_sidebar {
+  line-height: 30px;
+  margin: 10px;
+  padding: 5px;
+  width: 25%;
+  text-align: left;
+  border-left: 1px solid #333;
+  height: 100vh;
+}
+
+/* below change items' css */
+.products-text {
+}
+
+.products-name {
+}
+
+.products-images {
+}
+
+.products-btn {
+}
+
+.products-box {
+  text-align: center;
+  margin: 10px;
+  width: 120px;
+}
+
+.products-container {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+}
