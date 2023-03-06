@@ -11,13 +11,19 @@ const shoppingCartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       const item = action.payload;
-      state.items.push(item);
-      state.total += item.prices;
+      const existingItem = state.items.find(e => e.key === item.key);
+      if (existingItem) {
+        existingItem.amount += item.amount;
+      } else {
+        state.items.push(item);
+      }
+      state.total += item.prices * item.amount;
+
     },
     removeItem: (state, action) => {
-      const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
+      const itemIndex = state.items.findIndex(e => e.id === action.payload.key);
       if (itemIndex !== -1) {
-        state.total -= state.items[itemIndex].price;
+        state.total -= state.items[itemIndex].prices * state.items[itemIndex].amount;
         state.items.splice(itemIndex, 1);
       }
     },

@@ -33,7 +33,7 @@ a {
 }
 
 nav {
-  margin: 10px auto 0;
+  margin:0 0 0 100px;
   padding: 10px 0;
   display: flex;
   align-items: flex-end;
@@ -57,13 +57,9 @@ footer {
 /* siderbar css below */
 
 .layout_sidebar {
-  line-height: 30px;
-  margin: 10px;
+  line-height: 40px;
   padding: 5px;
-  width: 25%;
-  text-align: left;
   border-left: 1px solid #333;
-  height: 100vh;
 }
 
 /* below change items' css */
@@ -71,22 +67,31 @@ footer {
 }
 
 .products-name {
+  font-size:large;
+  padding: 0 10px;
 }
 
 .products-images {
+  width: 100%;
+  height: 100%;
 }
 
 .products-btn {
 }
 
 .products-box {
+  padding:0 0 10px 0;
   text-align: center;
   margin: 10px;
   width: 120px;
+  border: 1px solid #333;
+  
 }
 
 .products-container {
-  width: 70%;
-  display: flex;
-  flex-wrap: wrap;
+  width:70%;
+  margin: auto;
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
 }
