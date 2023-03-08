@@ -30,12 +30,8 @@ const Name = ({ MENU_ITERMS }) => {
     const { data } = MENU_ITERMS;
     return (
         <div className='main-content'>
-            <div className='products-container'>
-                <MenuContent className={'content'} MENU_ITERMS={data} />
-            </div>
-            <div className='layout_sidebar'>
+                <MenuContent MENU_ITERMS={data} />
                 <ShoppingCart />
-            </div>
         </div>
 
     );

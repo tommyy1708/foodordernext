@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [], // array of selected product data
+  tax: 0,
   total: 0, // total cost of selected products
 };
 
@@ -17,6 +18,7 @@ const shoppingCartSlice = createSlice({
       } else {
         state.items.push(item);
       }
+      state.tax += item.prices * item.amount * 0.06;
       state.total += item.prices * item.amount;
 
     },
@@ -24,11 +26,12 @@ const shoppingCartSlice = createSlice({
       const itemIndex = state.items.findIndex(e => e.id === action.payload.key);
       if (itemIndex !== -1) {
         state.total -= state.items[itemIndex].prices * state.items[itemIndex].amount;
+        state.tax -= state.items[itemIndex].prices * state.items[itemIndex].amount * 0.06;
         state.items.splice(itemIndex, 1);
       }
     },
   },
 });
 
-export const { addItem, removeItem } = shoppingCartSlice.actions;
+export const { addItem, removeItem, addItemAmount } = shoppingCartSlice.actions;
 export default shoppingCartSlice.reducer;
