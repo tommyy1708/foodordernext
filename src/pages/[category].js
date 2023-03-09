@@ -3,7 +3,7 @@ import MenuContent from '../components/MenuContent';
 import ShoppingCart from "../components/ShoppingCart";
 
 export const getStaticPaths = async () => {
-    const res = await fetch('http://localhost:9000/manage/menu');
+    const res = await fetch(`https://0.0.0.0:${PORT}/manage/menu`);
     const menus = await res.json();
 
     const paths = menus.data?.map(item => {
