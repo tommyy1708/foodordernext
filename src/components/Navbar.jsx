@@ -13,8 +13,8 @@ const Navbar = () => {
     return (
         <header className={styles.container}>
             <div className={styles.title}>
-                <h2>Golden Rice Bowl</h2>
-                <p>3276 FL-7,Frot Lauderdale, FL 33319</p>
+                <h2></h2>
+                <p></p>
             </div>
             <nav className={styles.menu}>
                 {category.data?.map((item) => (

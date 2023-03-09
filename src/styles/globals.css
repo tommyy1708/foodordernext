@@ -1,9 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
 
-html,
-body {
-  background: #f2f2f2;
-  color: #333;
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;                
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 100%;
+}
+
+s, i, em {
+  font-style: normal;
+  text-decoration: none;
+}
+
+fieldset, img, input, button {         
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline-style: none;
+}
+
+select, input {
+  vertical-align: middle;
+}
+
+a:hover {
+  color: #C81623;
+}
+
+table {
+  border-collapse: collapse;           
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
 }
 
 .text-center {
@@ -27,27 +65,30 @@ a {
   text-decoration: none;
 }
 
-.content {
-  max-width: 960px;
-  margin: 0 auto;
-}
 
 nav {
-  margin: 0 0 0 100px;
+  font-size: 32px;
   padding: 10px 0;
-  display: flex;
-  align-items: flex-end;
-  border-bottom: 1px solid #ddd;
+  text-transform: capitalize;
 }
 
 .layout_footer {
+  position: fixed;
+  height: 10vh;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #FFA500;
+  color: #333;
   text-align: center;
+  border-top: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-content {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  background-color: rgba(277, 164, 18);
 }
 
 .layout_left {
@@ -57,8 +98,9 @@ nav {
 
 .layout_right {
   text-align: center;
-  float: right;
-  width: 30%;
+  float: left;
+  width: 25%;
+  margin-bottom: 100px;
 }
 
 .nav-selected {
@@ -66,23 +108,60 @@ nav {
 }
 
 /* siderbar css below */
-
-.siderbar {
-  line-height: 40px;
-  padding: 5px;
-  border: 1px solid #333;
-}
-
-amount{
-  color: red;
-}
-
-.siderbar_item{
+.shpping-cart{
   width: 100%;
-  display: flex;
-  justify-content:space-between;
-  align-items: center;
-  padding: 10px 0;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.shopping-cart table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.shopping-cart th {
+  text-align: left;
+  padding: 10px;
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+}
+
+.shopping-cart td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.shopping-cart td button{
+  cursor: pointer;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: red;
+}
+
+.shopping-cart .total {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 1.2rem;
+}
+
+.shopping-cart .checkout-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shopping-cart .checkout-btn:hover {
+  background-color: #0062cc;
 }
 
 /* below change items' css */
@@ -99,14 +178,13 @@ amount{
   height: 100%;
 }
 
-.products-btn {
-}
-
 .products-box {
+  margin: 15px;
   padding: 0 0 10px 0;
   text-align: center;
   width: 160px;
   border: 1px solid #333;
+  border-radius: 5px;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.2s;
   transition: -webkit-transform 0.2s;
@@ -121,7 +199,8 @@ amount{
 
 .products_continer {
   margin-top: 5%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 100px;
 }

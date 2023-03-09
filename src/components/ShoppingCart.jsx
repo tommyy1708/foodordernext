@@ -1,5 +1,7 @@
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem } from '../store/slices/addcartslice';
+
 
 export default function ShoppingCart() {
   const items = useSelector(state => state.shoppingCart.items);
@@ -12,27 +14,40 @@ export default function ShoppingCart() {
     dispatch(removeItem({ key, name, prices, category }));
   }
 
+  //Approach Two without dialog
+  const receiptRef = useRef(null);
+  const printReceipt = () => {
+    const receipt = receiptRef.current;
+    console.log(receipt);
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+    iframe.contentDocument.write(receipt.innerHTML);
+    iframe.contentWindow.focus();
+    iframe.contentWindow.print();
+    document.body.removeChild(iframe);
+  };
+
   return (
     <siderbar className='layout_right'>
-      <div className='text-center'>
-        <h2 >Shopping Cart</h2>
-        {items.length === 0 ? (
-          <p>Your shopping cart is empty.</p>
-        ) : (
-          <ul className='list'>
-            {items.map(item => (
-              <li className={'siderbar_item underline'} key={item.key}>
-                <h4>{item.name}</h4>
-                <price>$ {item.prices}</price>x
-                <amount>{item.amount}</amount>
-                <button className='btn-margin' onClick={handleRemove}>remove</button>
-              </li>
+      <div className='shopping-cart' ref={receiptRef}>
+        {
+          items.length === 0 ? (<p>Please adding on left</p>) : (
+              <><table>{items.map(item => (
+              <tr>
+                <td>{item.name}</td>
+                <td>{item.prices}</td>
+                <td>X</td>
+                <td>{item.amount}</td>
+                <td onClick={handleRemove}><button>Remove</button></td>
+              </tr>
             ))}
-          </ul>
-        )}
-        <p className='text-center large-text'>Tax: ${tax.toFixed(2)}<br />Total: ${total.toFixed(2)}</p>
+            </table>
+            <p className='total'>Tax: ${tax.toFixed(2)}<br />Total: ${total.toFixed(2)}</p>
+            <button className='checkout-btn' onClick={printReceipt}>Checkout</button></>
+          )
+        }
       </div>
-    </siderbar>
-
-  );
+    </siderbar >
+  )
 }
