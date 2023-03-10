@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem } from '../store/slices/addcartslice';
+import { removeItem, updateItem } from '../store/slices/addcartslice';
 
 
 export default function ShoppingCart() {
@@ -8,7 +8,6 @@ export default function ShoppingCart() {
   const total = useSelector(state => state.shoppingCart.total);
   const tax = useSelector(state => state.shoppingCart.tax);
   const dispatch = useDispatch();
-
   const handleRemove = (item) => {
     const { key, name, prices, category } = item;
     dispatch(removeItem({ key, name, prices, category }));
@@ -18,7 +17,6 @@ export default function ShoppingCart() {
   const receiptRef = useRef(null);
   const printReceipt = () => {
     const receipt = receiptRef.current;
-    console.log(receipt);
     const iframe = document.createElement("iframe");
     iframe.style.display = "none";
     document.body.appendChild(iframe);
@@ -26,6 +24,8 @@ export default function ShoppingCart() {
     iframe.contentWindow.focus();
     iframe.contentWindow.print();
     document.body.removeChild(iframe);
+    const newItems = [];
+    dispatch(updateItem(newItems));
   };
 
   return (
@@ -34,9 +34,9 @@ export default function ShoppingCart() {
         {
           items.length === 0 ? (<p>Please adding on left</p>) : (
               <><table>{items.map(item => (
-              <tr>
+              <tr key={item.key}>
                 <td>{item.name}</td>
-                <td>{item.prices}</td>
+                <td>{item.prices.toFixed(2)}</td>
                 <td>X</td>
                 <td>{item.amount}</td>
                 <td onClick={handleRemove}><button>Remove</button></td>

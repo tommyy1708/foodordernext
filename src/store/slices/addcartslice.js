@@ -30,8 +30,11 @@ const shoppingCartSlice = createSlice({
         state.items.splice(itemIndex, 1);
       }
     },
+    updateItem:(state,action) =>{
+      state.items = action.payload;
+    },
   },
 });
 
-export const { addItem, removeItem, addItemAmount } = shoppingCartSlice.actions;
+export const { addItem, removeItem,updateItem } = shoppingCartSlice.actions;
 export default shoppingCartSlice.reducer;

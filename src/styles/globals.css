@@ -197,7 +197,7 @@ nav {
   transform: scale(1.2);
 }
 
-.products_continer {
+.products_container {
   margin-top: 5%;
   display: flex;
   flex-wrap: wrap;

@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 const Navbar = () => {
     const [category, setCategory] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:9000/manage/categorys')
+        fetch('https://tommyy1708.github.io/foodapi.io/categorys.json')
             .then((res) => res.json())
             .then((data) => setCategory(data));
+            
     }, [])
 
     return (
@@ -17,7 +18,7 @@ const Navbar = () => {
                 <p></p>
             </div>
             <nav className={styles.menu}>
-                {category.data?.map((item) => (
+                {category?.map((item) => (
                     <Link key={item.key} href={`/${item.name}`}>{item.name}</Link>
                 ))}
             </nav>

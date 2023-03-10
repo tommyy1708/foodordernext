@@ -10,7 +10,7 @@ const Cards = ({item,handleAddToCart}) => {
                 <Image  className='products-images' src='/test.webp' width={80} height={80} />
                 <h5  className="products-name">{name}</h5>
                 <p  className="products-text">{category}</p>
-                <p  className="products-text">Price: ${prices}</p>
+                <p  className="products-text">Price: ${prices.toFixed(2)}</p>
             </div>
         </div>
     );
