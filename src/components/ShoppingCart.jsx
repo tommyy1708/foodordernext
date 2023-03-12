@@ -29,7 +29,7 @@ export default function ShoppingCart() {
   };
 
   return (
-    <siderbar className='layout_right'>
+    <sidebar className='layout_right'>
       <div className='shopping-cart' ref={receiptRef}>
         {
           items.length === 0 ? (<p>Please adding on left</p>) : (
@@ -48,6 +48,6 @@ export default function ShoppingCart() {
           )
         }
       </div>
-    </siderbar >
+    </sidebar >
   )
 }

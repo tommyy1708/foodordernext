@@ -20,7 +20,6 @@ const shoppingCartSlice = createSlice({
       }
       state.tax += item.prices * item.amount * 0.06;
       state.total += item.prices * item.amount;
-
     },
     removeItem: (state, action) => {
       const itemIndex = state.items.findIndex(e => e.id === action.payload.key);
