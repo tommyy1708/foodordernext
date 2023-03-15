@@ -14,8 +14,7 @@ const Navbar = () => {
     return (
         <header className={styles.container}>
             <div className={styles.title}>
-                <h2></h2>
-                <p></p>
+
             </div>
             <nav className={styles.menu}>
                 {category?.map((item) => (

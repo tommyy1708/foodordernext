@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuContent from '../components/MenuContent';
 import ShoppingCart from "../components/ShoppingCart";
+import Receipt from '../components/Receipt';
 
 export async function getStaticPaths(){
     const res = await fetch('https://tommyy1708.github.io/foodapi.io/categorys.json');
@@ -34,7 +35,6 @@ const Name = ({ MENU_ITEMS }) => {
                 <MenuContent MENU_ITEMS={MENU_ITEMS} />
                 <ShoppingCart />
         </div>
-
     );
 }
 

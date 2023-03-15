@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateItem } from '../store/slices/addcartslice';
 
-
-export default function ShoppingCart() {
+function ShoppingCart() {
   const items = useSelector(state => state.shoppingCart.items);
   const total = useSelector(state => state.shoppingCart.total);
   const tax = useSelector(state => state.shoppingCart.tax);
@@ -12,10 +11,10 @@ export default function ShoppingCart() {
     const { key, name, prices, category } = item;
     dispatch(removeItem({ key, name, prices, category }));
   }
-
+  //! Those are old print function
   //Approach Two without dialog
   const receiptRef = useRef(null);
-  const printReceipt = () => {
+  const printRci = () => {
     const receipt = receiptRef.current;
     const iframe = document.createElement("iframe");
     iframe.style.display = "none";
@@ -28,12 +27,14 @@ export default function ShoppingCart() {
     dispatch(updateItem(newItems));
   };
 
+
+
   return (
     <sidebar className='layout_right'>
       <div className='shopping-cart' ref={receiptRef}>
         {
           items.length === 0 ? (<p>Please adding on left</p>) : (
-              <><table>{items.map(item => (
+            <><table id='shopping-receipt'>{items.map(item => (
               <tr key={item.key}>
                 <td>{item.name}</td>
                 <td>{item.prices.toFixed(2)}</td>
@@ -43,11 +44,16 @@ export default function ShoppingCart() {
               </tr>
             ))}
             </table>
-            <p className='total'>Tax: ${tax.toFixed(2)}<br />Total: ${total.toFixed(2)}</p>
-            <button className='checkout-btn' onClick={printReceipt}>Checkout</button></>
+              <p className='total'>Tax: ${tax.toFixed(2)}<br />Total: ${total.toFixed(2)}</p>
+            </>
           )
         }
+        <button className='checkout-btn' onClick={printRci}>Checkout</button>
       </div>
     </sidebar >
   )
 }
+
+
+
+export default ShoppingCart;
