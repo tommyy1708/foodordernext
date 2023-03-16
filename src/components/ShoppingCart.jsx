@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateItem } from '../store/slices/addcartslice';
+import { removeItem } from '../store/slices/addcartslice';
+import dynamic from 'next/dynamic'; 
+const Receipt = dynamic(() => import('./Receipt'), { ssr: false });
 
 function ShoppingCart() {
   const items = useSelector(state => state.shoppingCart.items);
@@ -11,8 +13,9 @@ function ShoppingCart() {
     const { key, name, prices, category } = item;
     dispatch(removeItem({ key, name, prices, category }));
   }
-  //! Those are old print function
-  //Approach Two without dialog
+
+  /*  ----below is old print function----
+
   const receiptRef = useRef(null);
   const printRci = () => {
     const receipt = receiptRef.current;
@@ -27,11 +30,19 @@ function ShoppingCart() {
     dispatch(updateItem(newItems));
   };
 
+  ref={receiptRef} this comes after shopping-cart tag
+   --------------------------- */
 
+
+  const receiptContent = {
+    items,
+    total,
+    tax,
+  }
 
   return (
     <sidebar className='layout_right'>
-      <div className='shopping-cart' ref={receiptRef}>
+      <div id='receiptContent' className='shopping-cart' >
         {
           items.length === 0 ? (<p>Please adding on left</p>) : (
             <><table id='shopping-receipt'>{items.map(item => (
@@ -40,7 +51,7 @@ function ShoppingCart() {
                 <td>{item.prices.toFixed(2)}</td>
                 <td>X</td>
                 <td>{item.amount}</td>
-                <td onClick={handleRemove}><button>Remove</button></td>
+                <td onClick={handleRemove}><button className='shopping-list-remove'>Remove</button></td>
               </tr>
             ))}
             </table>
@@ -48,7 +59,7 @@ function ShoppingCart() {
             </>
           )
         }
-        <button className='checkout-btn' onClick={printRci}>Checkout</button>
+        <Receipt content={receiptContent}></Receipt>
       </div>
     </sidebar >
   )

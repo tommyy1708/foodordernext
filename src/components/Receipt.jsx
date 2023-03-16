@@ -1,49 +1,51 @@
-import React, { useEffect } from 'react';
-// import printJS from 'print-js';
+import React from 'react';
+import printJS from 'print-js';
 
-const Receipt = () => {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.printJS = printJS;
-    }
-  }, []);
 
-  function handlePrint() {
-    const content = document.getElementById('receipt').innerHTML;
-    if (typeof window !== 'undefined' && window.printJS) {
-      window.printJS({
-        printable: content,
-        type: 'html',
-        documentTitle: 'Receipt',
-        onPrintDialogClose: () => {
-          window.print();
-        },
-        pageStyle: `
-        @page {
-          size: 58mm 50mm; 
-          margin: 0; 
-        }
-        @media print {
-          body {
-            margin: 0; 
-          }
-        }
-      `,
-      });
-    }
+export default function Receipt({ content }) {
+
+  const {
+    items,
+    total,
+    tax, } = content;
+
+  function printReceipt() {
+    printJS({
+      printable: 'receiptContent',
+      type: 'html',
+      showModal: true,
+      modalMessage: 'Printing, please wait...',
+      paperSize: { 
+        unit: 'mm',
+        width: 58, 
+        height: 50 
+      },
+      style:'@page {margin:0}',
+      ignoreElements:['.shopping-list-remove'],
+    });
   }
 
   return (
-    <div>
-      <h1>Print Example</h1>
-      <div id="receipt">
-        {/* Content of receipt */}
-        <p>paper</p>
-        <p>prices $10</p>
+    <>
+      <div id="receipt" style={{display:'none'}} >
+        {
+          items.length === 0 ? (<p>Please adding on left</p>) : (
+            <><table id='print-receipt'>{items.map(item => (
+              <tr key={item.key}>
+                <td>{item.name}</td>
+                <td>{item.prices.toFixed(2)}</td>
+                <td>X</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+            </table>
+              <p className='total'>Tax: ${tax.toFixed(2)}<br />Total: ${total.toFixed(2)}</p>
+            </>
+          )
+        }
       </div>
-      <button onClick={handlePrint}>checkout</button>
-    </div>
-  )
+      <button className='checkout-btn' onClick={printReceipt}>Checkout</button>
+    </>
+  );
 }
 
-export default Receipt;
