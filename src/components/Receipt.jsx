@@ -15,13 +15,13 @@ export default function Receipt({ content }) {
       type: 'html',
       showModal: true,
       modalMessage: 'Printing, please wait...',
-      paperSize: { 
-        unit: 'mm',
-        width: 58, 
-        height: 50 
-      },
-      style:'@page {margin:0}',
-      ignoreElements:['.shopping-list-remove'],
+      // paperSize: { 
+      //   unit: 'mm',
+      //   width: 58, 
+      //   height: 50 
+      // },
+      style:'@page {size: 4in 6in; margin:0; }', // this size for receipt
+      font_size:'12pt',
     });
   }
 

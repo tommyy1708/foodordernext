@@ -51,7 +51,7 @@ function ShoppingCart() {
                 <td>{item.prices.toFixed(2)}</td>
                 <td>X</td>
                 <td>{item.amount}</td>
-                <td onClick={handleRemove}><button className='shopping-list-remove'>Remove</button></td>
+                <td onClick={handleRemove}><button id="removeBtn">Remove</button></td>
               </tr>
             ))}
             </table>
