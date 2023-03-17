@@ -22,6 +22,7 @@ export default function Receipt({ content }) {
       // },
       style:'@page {size: 4in 6in; margin:0; }', // this size for receipt
       font_size:'12pt',
+      ignoreElements:['#shopping-receipt p'],
     });
   }
 

@@ -1,0 +1,11 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 79.5vh;
+  background-color: rgba(51, 51, 51, 0.107);
+  margin-bottom: 10vh;
+  margin-top: 90px;
+  font-size: 2rem;
+}
