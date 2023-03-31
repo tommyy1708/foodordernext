@@ -123,10 +123,11 @@ nav {
 
 /* sidebar css below */
 .shopping-cart {
-  max-width: 800px;
+  max-width: 400px;
   margin:  15vh 0;
   width: 100%;
 }
+
 .shopping-cart table {
   width: 100%;
   padding: 20px;
@@ -137,7 +138,9 @@ nav {
 }
 
 .shopping-cart td {
-  padding: 10px;
+  white-space: normal;
+  word-wrap: break-word;
+  padding: 5px;
   border-bottom: 1px solid #ccc;
 }
 
@@ -188,6 +191,8 @@ nav {
   margin: 15px;
   padding: 0 0 10px 0;
   text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   width: 160px;
   border: 1px solid #333;
   border-radius: 5px;
